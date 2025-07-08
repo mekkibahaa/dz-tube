@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Untitled</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DZTube - منصة مشاهدة جزائرية</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📺 DZTube</h1>
+      <p>منصة مشاهدة وتحميل فيديوهات جزائرية 🇩🇿</p>
+    </header>
+
+    <div class="search-bar">
+      <input type="text" id="video-url" placeholder="ضع رابط الفيديو (YouTube، Facebook، TikTok)">
+      <button onclick="loadVideo()">عرض</button>
+    </div>
+
+    <div id="video-container"></div>
+
+    <footer>
+      <p>© 2025 DZTube - صنع في الجزائر 🇩🇿 بواسطة مكي بهاء الدين</p>
+    </footer>
+  </div>
+
+  <script>
+    function loadVideo() {
+      const url = document.getElementById("video-url").value.trim();
+      const videoContainer = document.getElementById("video-container");
+
+      if (url.includes("youtube.com") || url.includes("youtu.be")) {
+        const videoId = extractYouTubeId(url);
+        if (videoId) {
+          videoContainer.innerHTML = `
+            <iframe width="100%" height="400" 
+                    src="https://www.youtube.com/embed/${videoId}" 
+                    frameborder="0" allowfullscreen></iframe>
+            <a href="https://www.y2mate.com/youtube/${videoId}" target="_blank">
+              <button style="margin-top: 10px;">تحميل الفيديو 🔽</button>
+            </a>
+          `;
+        } else {
+          videoContainer.innerHTML = "<p>رابط YouTube غير صالح.</p>";
+        }
+
+      } else if (url.includes("facebook.com")) {
+        videoContainer.innerHTML = `
+          <p>⬇️ لتحميل الفيديو من Facebook، انتقل إلى:</p>
+          <a href="https://fdown.net/" target="_blank">
+            <button>fdown.net</button>
+          </a>
+        `;
+
+      } else if (url.includes("tiktok.com")) {
+        videoContainer.innerHTML = `
+          <p>⬇️ لتحميل الفيديو من TikTok، انتقل إلى:</p>
+          <a href="https://snaptik.app/" target="_blank">
+            <button>snaptik.app</button>
+          </a>
+        `;
+
+      } else {
+        videoContainer.innerHTML = "<p>رابط غير مدعوم حالياً. يرجى وضع رابط YouTube أو Facebook أو TikTok.</p>";
+      }
+    }
+
+    function extractYouTubeId(url) {
+      const regExp = /(?:youtube\.com.*(?:\?|&)v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+      const match = url.match(regExp);
+      return match ? match[1] : null;
+    }
+  </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
