@@ -1,0 +1,59 @@
+body {
+  font-family: 'Tahoma', sans-serif;
+  background: linear-gradient(45deg, #006233, #ffffff, #d21034);
+  background-size: 300% 300%;
+  animation: bg 20s ease infinite;
+  margin: 0;
+  padding: 0;
+  direction: rtl;
+}
+
+@keyframes bg {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.container {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+  background: rgba(255,255,255,0.95);
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00000055;
+}
+
+header {
+  text-align: center;
+  color: #006233;
+}
+
+.search-bar {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #006233;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#video-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #555;
+}
